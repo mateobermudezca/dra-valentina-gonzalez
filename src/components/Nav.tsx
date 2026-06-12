@@ -49,9 +49,10 @@ export default function Nav() {
         <div className="flex h-full items-center justify-between">
           <a
             href="#inicio"
-            className="font-display text-lg font-bold tracking-tight text-text-light dark:text-text-dark"
+            className="font-display text-base md:text-lg font-bold tracking-tight text-text-light dark:text-text-dark flex items-center gap-1.5"
           >
-            Dra. Valentina
+            <span>Dra. Valentina González</span>
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
           </a>
 
           <div className="hidden items-center gap-1 md:flex">
@@ -68,7 +69,7 @@ export default function Nav() {
 
           <div className="flex items-center gap-2">
             <a
-              href="https://wa.me/584241234567"
+              href="https://wa.me/573126668428?text=Hola%20Dra.%20Valentina%20Gonz%C3%A1lez%2C%20me%20gustar%C3%ADa%20agendar%20una%20consulta%20de%20valoraci%C3%B3n."
               target="_blank"
               rel="noopener noreferrer"
               className="flex h-9 w-9 items-center justify-center rounded-xl text-text-light/60 transition-colors hover:bg-accent/10 hover:text-accent dark:text-text-dark/60"

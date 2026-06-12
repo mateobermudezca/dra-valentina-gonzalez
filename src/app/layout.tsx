@@ -15,9 +15,9 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Dra. Valentina González | Diseño de Sonrisa & Implantes Dentales",
+  title: "Dra. Valentina González | Odontología Estética & Diseño de Sonrisa en Medellín",
   description:
-    "Transformamos tu sonrisa con diseño digital de alta precisión. Especialistas en carillas, implantes y micro-diseño dental en Maracaibo.",
+    "Especialista en Diseño de Sonrisa, carillas de porcelana e implantes dentales en El Poblado, Medellín. Atención exclusiva para pacientes nacionales e internacionales.",
 };
 
 export default function RootLayout({

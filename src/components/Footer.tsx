@@ -11,8 +11,9 @@ export default function Footer() {
             <span className="font-display text-lg font-bold tracking-tight text-text-light dark:text-text-dark">
               Dra. Valentina González
             </span>
-            <p className="mt-1 text-xs text-text-light/50 dark:text-text-dark/50">
-              Estética Dental de Precisión · Maracaibo, Venezuela
+            <p className="mt-1 text-xs text-text-light/50 dark:text-text-dark/50 leading-relaxed">
+              Odontología Estética & Diseño de Sonrisa <br />
+              Calle 19a #44-25, El Poblado, Medellín · Consultorio 1701-1702
             </p>
           </div>
 
@@ -27,7 +28,7 @@ export default function Footer() {
               <InstagramLogo size={18} weight="light" />
             </a>
             <a
-              href="https://wa.me/584241234567"
+              href="https://wa.me/573126668428?text=Hola%20Dra.%20Valentina%20Gonz%C3%A1lez%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n."
               target="_blank"
               rel="noopener noreferrer"
               className="flex h-10 w-10 items-center justify-center rounded-xl border border-accent/10 text-text-light/50 transition-colors hover:border-accent/30 hover:text-accent dark:text-text-dark/50"

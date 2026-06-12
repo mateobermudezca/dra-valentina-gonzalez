@@ -1,16 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { PaperPlaneRight, CheckCircle } from "@phosphor-icons/react";
+import { PaperPlaneRight, CheckCircle, WhatsappLogo } from "@phosphor-icons/react";
 import { useReveal } from "@/lib/useReveal";
 
 const services = [
   "Diseño de Sonrisa",
-  "Carillas Dentales",
-  "Implantes Dentales",
-  "Blanqueamiento",
-  "Limpieza Profunda",
-  "Consulta General",
+  "Carillas de Porcelana/Resina",
+  "Implantes Dentales & Rehabilitación",
+  "Blanqueamiento Premium",
+  "Limpieza / Valoración",
   "Otro",
 ];
 
@@ -21,6 +20,7 @@ export default function CTAForm() {
     email: "",
     phone: "",
     service: "",
+    isInternational: "",
     message: "",
   });
 
@@ -42,40 +42,48 @@ export default function CTAForm() {
           <div className="absolute bottom-0 left-0 h-48 w-48 -translate-x-1/4 translate-y-1/4 rounded-full bg-accent/3 blur-3xl" />
 
           {submitted ? (
-            <div className="flex flex-col items-center justify-center py-16 text-center transition-all">
+            <div className="flex flex-col items-center justify-center py-16 text-center transition-all z-10 relative">
               <CheckCircle size={48} weight="light" className="text-accent" />
               <h3 className="mt-6 font-display text-2xl font-bold text-text-light dark:text-text-dark">
-                ¡Mensaje enviado!
+                ¡Solicitud Recibida!
               </h3>
-              <p className="mt-2 max-w-sm text-sm text-text-light/60 dark:text-text-dark/60">
-                Gracias por escribirnos. La Dra. Valentina revisará tu solicitud y te
-                contactaremos en las próximas 24 horas hábiles.
+              <p className="mt-2 max-w-md text-sm leading-relaxed text-text-light/65 dark:text-text-dark/65">
+                Gracias, <strong>{form.name}</strong>. La Dra. Valentina revisará tu solicitud de valoración para <strong>{form.service}</strong> y te contactaremos en menos de 24 horas hábiles.
               </p>
-              <button
-                onClick={() => {
-                  setSubmitted(false);
-                  setForm({ name: "", email: "", phone: "", service: "", message: "" });
-                }}
-                className="mt-8 rounded-full border border-accent/20 px-6 py-2.5 text-sm font-semibold text-accent transition-colors hover:bg-accent/10"
-              >
-                Enviar otro mensaje
-              </button>
+              
+              <div className="flex flex-col sm:flex-row items-center gap-4 mt-8 w-full justify-center">
+                <a
+                  href={`https://wa.me/573126668428?text=Hola%20Dra.%20Valentina%2C%20acabo%20de%20enviar%20el%20formulario%20de%20contacto.%20Mi%20nombre%20es%20${encodeURIComponent(form.name)}%20y%20me%20interesa%20el%20servicio%20de%20${encodeURIComponent(form.service)}.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-accent-dim shadow-lg shadow-accent/15"
+                >
+                  <WhatsappLogo size={18} weight="fill" />
+                  Priorizar cita por WhatsApp
+                </a>
+                <button
+                  onClick={() => {
+                    setSubmitted(false);
+                    setForm({ name: "", email: "", phone: "", service: "", isInternational: "", message: "" });
+                  }}
+                  className="rounded-full border border-accent/20 px-6 py-3 text-sm font-semibold text-text-light/70 transition-colors hover:bg-accent/10 dark:text-text-dark/70"
+                >
+                  Enviar otra solicitud
+                </button>
+              </div>
             </div>
           ) : (
-            <div className="transition-all">
+            <div className="transition-all z-10 relative">
               <div className="mb-10 text-center">
                 <span className="inline-block rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 text-xs font-semibold tracking-widest text-accent uppercase">
-                  Contacto
+                  Agendamiento
                 </span>
-                <h2 className="mt-6 font-display text-3xl leading-tight tracking-tight md:text-5xl">
-                  Comienza tu{" "}
-                  <span className="bg-gradient-to-r from-accent to-accent-dim bg-clip-text text-transparent">
-                    transformación
-                  </span>
+                <h2 className="mt-6 font-display text-3xl leading-tight tracking-tight md:text-5xl text-text-light dark:text-text-dark font-light">
+                  Comienza tu <br />
+                  <span className="font-bold text-accent">transformación.</span>
                 </h2>
                 <p className="mx-auto mt-3 max-w-md text-sm text-text-light/60 dark:text-text-dark/60">
-                  Cuéntanos qué tratamiento te interesa y te daremos toda la información
-                  personalizada.
+                  Cuéntanos qué tratamiento te interesa y diseñemos juntos la sonrisa que mereces.
                 </p>
               </div>
 
@@ -87,7 +95,7 @@ export default function CTAForm() {
                     required
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="w-full rounded-xl border border-accent/10 bg-white/50 px-5 py-3.5 text-sm text-text-light placeholder:text-text-light/30 transition-all focus:border-accent/30 focus:outline-none focus:ring-2 focus:ring-accent/10 dark:bg-white/5 dark:text-text-dark dark:placeholder:text-text-dark/30"
+                    className="w-full rounded-xl border border-accent/10 bg-white/50 px-5 py-3.5 text-sm text-text-light placeholder:text-text-light/35 transition-all focus:border-accent/30 focus:outline-none focus:ring-2 focus:ring-accent/10 dark:bg-white/5 dark:text-text-dark dark:placeholder:text-text-dark/35"
                   />
                   <input
                     type="email"
@@ -95,19 +103,34 @@ export default function CTAForm() {
                     required
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full rounded-xl border border-accent/10 bg-white/50 px-5 py-3.5 text-sm text-text-light placeholder:text-text-light/30 transition-all focus:border-accent/30 focus:outline-none focus:ring-2 focus:ring-accent/10 dark:bg-white/5 dark:text-text-dark dark:placeholder:text-text-dark/30"
+                    className="w-full rounded-xl border border-accent/10 bg-white/50 px-5 py-3.5 text-sm text-text-light placeholder:text-text-light/35 transition-all focus:border-accent/30 focus:outline-none focus:ring-2 focus:ring-accent/10 dark:bg-white/5 dark:text-text-dark dark:placeholder:text-text-dark/35"
                   />
                 </div>
 
                 <div className="grid gap-5 md:grid-cols-2">
                   <input
                     type="tel"
-                    placeholder="Teléfono (WhatsApp)"
+                    placeholder="WhatsApp (ej: +57 300 1234567)"
                     required
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    className="w-full rounded-xl border border-accent/10 bg-white/50 px-5 py-3.5 text-sm text-text-light placeholder:text-text-light/30 transition-all focus:border-accent/30 focus:outline-none focus:ring-2 focus:ring-accent/10 dark:bg-white/5 dark:text-text-dark dark:placeholder:text-text-dark/30"
+                    className="w-full rounded-xl border border-accent/10 bg-white/50 px-5 py-3.5 text-sm text-text-light placeholder:text-text-light/35 transition-all focus:border-accent/30 focus:outline-none focus:ring-2 focus:ring-accent/10 dark:bg-white/5 dark:text-text-dark dark:placeholder:text-text-dark/35"
                   />
+                  <select
+                    required
+                    value={form.isInternational}
+                    onChange={(e) => setForm({ ...form, isInternational: e.target.value })}
+                    className="w-full rounded-xl border border-accent/10 bg-white/50 px-5 py-3.5 text-sm text-text-light transition-all focus:border-accent/30 focus:outline-none focus:ring-2 focus:ring-accent/10 dark:bg-white/5 dark:text-text-dark"
+                  >
+                    <option value="" disabled>
+                      ¿Dónde te encuentras?
+                    </option>
+                    <option value="local">Resido en Colombia (Local)</option>
+                    <option value="international">Viajo desde el exterior (Internacional)</option>
+                  </select>
+                </div>
+
+                <div>
                   <select
                     required
                     value={form.service}
@@ -115,7 +138,7 @@ export default function CTAForm() {
                     className="w-full rounded-xl border border-accent/10 bg-white/50 px-5 py-3.5 text-sm text-text-light transition-all focus:border-accent/30 focus:outline-none focus:ring-2 focus:ring-accent/10 dark:bg-white/5 dark:text-text-dark"
                   >
                     <option value="" disabled>
-                      Tipo de servicio
+                      Tratamiento de Interés
                     </option>
                     {services.map((s) => (
                       <option key={s} value={s}>
@@ -126,19 +149,19 @@ export default function CTAForm() {
                 </div>
 
                 <textarea
-                  placeholder="Cuéntanos sobre tu caso o lo que te gustaría mejorar..."
+                  placeholder="Cuéntanos brevemente sobre tu caso o qué aspecto de tu sonrisa te gustaría mejorar..."
                   rows={4}
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full resize-none rounded-xl border border-accent/10 bg-white/50 px-5 py-3.5 text-sm text-text-light placeholder:text-text-light/30 transition-all focus:border-accent/30 focus:outline-none focus:ring-2 focus:ring-accent/10 dark:bg-white/5 dark:text-text-dark dark:placeholder:text-text-dark/30"
+                  className="w-full resize-none rounded-xl border border-accent/10 bg-white/50 px-5 py-3.5 text-sm text-text-light placeholder:text-text-light/35 transition-all focus:border-accent/30 focus:outline-none focus:ring-2 focus:ring-accent/10 dark:bg-white/5 dark:text-text-dark dark:placeholder:text-text-dark/35"
                 />
 
-                <div className="text-center">
+                <div className="text-center pt-2">
                   <button
                     type="submit"
-                    className="group inline-flex items-center gap-2 rounded-full bg-accent px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-accent-dim"
+                    className="group inline-flex items-center gap-2 rounded-full bg-accent px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-accent-dim shadow-lg shadow-accent/10"
                   >
-                    Enviar mensaje
+                    Enviar Solicitud
                     <PaperPlaneRight
                       size={16}
                       weight="bold"
