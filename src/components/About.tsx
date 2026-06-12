@@ -22,15 +22,15 @@ export default function About() {
           ref={imgRef}
           className="relative aspect-[4/5] p-1.5 rounded-[2rem] bg-black/5 dark:bg-white/5 ring-1 ring-black/5 dark:ring-white/10 overflow-hidden"
         >
-          <div className="relative h-full w-full overflow-hidden rounded-[calc(2rem-0.375rem)]">
+          <div className="relative h-full w-full overflow-hidden rounded-[calc(2rem-0.375rem)] bg-gradient-to-b from-surface-light-2 to-surface-light/40 dark:from-surface-dark dark:to-surface-mid/40">
             <Image
-              src="/images/gallery-1.jpg"
+              src="/images/dra-logo.png"
               alt="Dra. Valentina González Cruz - Especialista en Diseño de Sonrisa en Medellín"
               fill
-              className="object-cover"
+              className="object-contain object-bottom drop-shadow-xl"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-surface-dark/40 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-surface-dark/10 via-transparent to-transparent pointer-events-none" />
           </div>
         </div>
 

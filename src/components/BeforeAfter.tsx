@@ -70,7 +70,7 @@ export default function BeforeAfter({
         {/* After image (clipped overlay) */}
         <div
           className="absolute inset-0"
-          style={{ clipPath: `inset(0 0 0 ${100 - position}%)` }}
+          style={{ clipPath: `inset(0 0 0 ${position}%)` }}
         >
           <Image
             src={after}
