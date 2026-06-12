@@ -10,7 +10,8 @@
 - **Identidad de marca actualizada:** Beige/dorado cálido extraído del logo (`oklch(0.75 0.08 73)`) como color acento principal. Marrón cálido (`oklch(0.52 0.10 60)`) para botones y rellenos sólidos.
 - **Tipografía:** Outfit (display) + Plus Jakarta Sans (body). Ambas desde Google Fonts.
 - **Iconos:** Phosphor Icons variante `light` — componente que los importa debe tener `"use client"`.
-- **3D en Hero:** `@react-three/fiber` + `@react-three/drei` + `three`. Escena full-bleed con fondo oscuro (`#0a0808`), alpha: false. Componente importado con `dynamic(() => import(...), { ssr: false })`. Incluye detección WebGL, mobile DPR, y fallback silencioso.
+- **Diente en Hero:** SVG inline (`ToothSVG.tsx`) con colores neutros marfil/beige cálido, gloss de porcelana, y glow dorado en modo oscuro. Animación `float-slow` CSS. Sin dependencias externas.
+- **Tema claro/oscuro:** Hero usa clases `dark:` en Tailwind. Fondo `bg-surface-light-2/20 dark:bg-surface-dark/10`. Textos, badges y botones cambian automáticamente con el toggle `.dark`.
 - **Contenido visual:** Logo (`logo.png`), foto Dra. con logo superpuesto y fondo transparente (`dra-logo.png`), par antes/después para slider (`before-1.jpg`, `after-1.jpg`).
 - **Deploy:** Repositorio creado en GitHub (`mateobermudezca/dra-valentina-gonzalez`). Usuario despliega en Vercel.
 - **Skill instalado:** `3d-web-experience` desde `sickn33/antigravity-awesome-skills` — skill local en `.agents/skills/3d-web-experience/SKILL.md`.
@@ -28,24 +29,14 @@
 - Colores del sistema actualizados: beige logo (`oklch 0.75 0.08 73`) como acento, marrón cálido (`oklch 0.52 0.10 60`) para botones. Pulse-glow actualizado.
 - 6 imágenes de Instagram copiadas a `public/images/gallery-{1..6}.jpg`.
 - BeforeAfter slider integrado en `Gallery.tsx` reemplazando slider manual anterior.
-- Build exitoso (`npm run build` pasa sin errores). Commit y push de todos los cambios (antes del 3D).
 - Skill `3d-web-experience` instalado localmente en `.agents/skills/3d-web-experience/`.
-- Skill leído: recomienda R3F para React, Spline para prototipos, Three.js para control.
-- `@react-three/fiber`, `@react-three/drei`, `three` instalados exitosamente (57 paquetes agregados, build compile exitoso en 2.4s).
-- Búsqueda de recursos 3D dentales gratuitos completada. Se optó por crear un diente procedural propio sin dependencias externas ni licencias.
-- **REDISEÑO COMPLETO DEL HERO:**
-  - Escena 3D ahora es full-bleed: el `Canvas` con `alpha: false` y fondo `#0a0808` cubre todo el hero section como fondo oscuro dramático.
-  - El diente procedural está posicionado en `x: 1.4` dentro de la escena 3D, con animación de flotación y rotación suave.
-  - Gradiente overlay a la izquierda (`#0a0808/90 → transparent`) para legibilidad del texto sobre escena oscura.
-  - Heading con gradiente dorado en `bg-clip-text text-transparent` para "confianza absoluta."
-  - Tag badge, botones y badges flotantes con `backdrop-blur-sm` y bordes semitransparentes sobre fondo oscuro.
-  - Partículas: 200 con additive blending y colores variados (acento, blanco, azul suave).
-  - 3 FloatingsDiamonds (octahedrons) animados independientemente.
-  - 3 GlowRings concéntricos con rotación 3D y opacidad 0.1.
-  - Torus knot wireframe en posición izquierda (`x: -1.8`) con animación de flotación + rotación.
-  - MouseHandler con interpolación suave (lerp) para parallax de toda la escena.
-  - Iluminación: ambient + hemisphere + 2 directional + 1 point light.
-  - Gradiente fade-out inferior para transición suave con la siguiente sección.
+- `@react-three/fiber`, `@react-three/drei`, `three` instalados. Se intentó escena 3D full-bleed oscura con diente procedural, partículas y anillos.
+- **HEREO REDISEÑADO (definitivo):**
+  - El diente es SVG inline (`ToothSVG.tsx`) con colores marfil/beige, gloss de porcelana y glow dorado en modo oscuro.
+  - Hero funciona en modo claro y oscuro: fondo `bg-surface-light-2/20 dark:bg-surface-dark/10`, textos temáticos, badges con glassmorphism.
+  - 3 anillos decorativos concéntricos detrás del diente.
+  - Animación `float-slow` CSS en el diente.
+  - Se eliminó `Hero3DScene.tsx` (escena 3D R3F).
 - Build verificado (`npm run build` pasa sin errores con Turbopack).
 
 ### In Progress
@@ -65,9 +56,10 @@
 - **R3F funciona con Next.js 16 + Turbopack:** A diferencia de `motion/react`, `@react-three/fiber` compila y renderiza correctamente. Se importa con `dynamic(..., { ssr: false })` para evitar SSR del canvas WebGL.
 - **Hero oscuro full-bleed:** Se optó por un fondo oscuro (`#0a0808`) para la escena 3D que contrasta con las secciones claras siguientes. El `alpha: false` en el Canvas y el color de fondo en Three.js (`color attach="background"`) permiten que los elementos 3D (partículas, anillos, diente) brillen con alto contraste. Un gradiente overlay a la izquierda asegura legibilidad del texto.
 - **Mouse parallax vía ref mutado:** En vez del `onPointerMove` de R3F, se usa el `pointer` del hook `useThree` con `THREE.MathUtils.lerp` para movimiento suave y fluido de toda la escena.
+- **Hero descartó escena 3D por SVG inline:** La escena R3F full-bleed oscura rompió el modo claro y era demasiado pesada. Se reemplazó por `ToothSVG.tsx` con SVG inline liviano que se adapta a ambos temas vía clases `dark:` y `hidden dark:block`.
 
 ## Next Steps
-1. Hacer push de los cambios actuales (hero redesign, full-bleed 3D) a GitHub
+1. Hacer push de los cambios actuales a GitHub
 2. Confirmar deploy automático en Vercel
 3. *(Fase 2)* Conectar formulario con Google App Script + Sheets + Calendar
 
