@@ -1,26 +1,112 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@variant dark (&:where(.dark, .dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-surface-dark: oklch(0.13 0.008 30);
+  --color-surface-mid: oklch(0.18 0.01 30);
+  --color-surface-light: oklch(0.96 0.005 85);
+  --color-surface-light-2: oklch(0.99 0.003 85);
+  --color-accent: oklch(0.68 0.12 50);
+  --color-accent-dim: oklch(0.58 0.09 50);
+  --color-accent-glow: oklch(0.72 0.14 50 / 0.15);
+  --color-text-dark: oklch(0.92 0.005 85);
+  --color-text-muted: oklch(0.65 0.01 50);
+  --color-text-light: oklch(0.15 0.008 30);
+  --color-border-dark: oklch(1 0 0 / 0.08);
+  --color-border-light: oklch(0 0 0 / 0.06);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), sans-serif;
+  background-color: var(--color-surface-light-2);
+  color: var(--color-text-light);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.dark body,
+body.dark {
+  background-color: var(--color-surface-dark);
+  color: var(--color-text-dark);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes reveal-left {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes reveal-right {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 oklch(0.68 0.12 50 / 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 16px oklch(0.68 0.12 50 / 0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+}
+
+.reveal.visible {
+  animation: reveal-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.reveal-left.visible {
+  animation: reveal-left 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.reveal-right.visible {
+  animation: reveal-right 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.reveal-fade.visible {
+  animation: fade-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
 }
