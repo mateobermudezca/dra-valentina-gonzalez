@@ -18,21 +18,23 @@ export default function Hero() {
       <div className="absolute bottom-1/4 right-1/10 h-96 w-96 rounded-full bg-accent/2 blur-3xl pointer-events-none" />
 
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 pb-20 pt-10 md:grid-cols-2 md:pt-20">
-        {/* Left column: Image with Double Bezel */}
+        {/* Left column: Doctor photo */}
         <div
           ref={imgRef}
-          className="relative aspect-[4/5] md:aspect-[3/4] p-1.5 rounded-[2rem] bg-black/5 dark:bg-white/5 ring-1 ring-black/5 dark:ring-white/10 overflow-hidden"
+          className="relative flex items-end md:items-center justify-center"
         >
-          <div className="relative h-full w-full overflow-hidden rounded-[calc(2rem-0.375rem)]">
-            <div className="absolute inset-0 z-10 bg-gradient-to-br from-accent/10 to-transparent pointer-events-none" />
-            <Image
-              src="/images/dra-logo.png"
-              alt="Dra. Valentina González en El Poblado, Medellín"
-              fill
-              className="object-cover"
-              priority
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
+          <div className="relative w-full max-w-sm aspect-[3/4]">
+            <div className="absolute -inset-4 bg-gradient-to-br from-accent/10 via-accent/3 to-transparent rounded-[3rem] blur-2xl" />
+            <div className="relative h-full w-full">
+              <Image
+                src="/images/dra-logo.png"
+                alt="Dra. Valentina González"
+                fill
+                className="object-contain object-bottom drop-shadow-2xl"
+                priority
+                sizes="(max-width: 768px) 90vw, 40vw"
+              />
+            </div>
           </div>
         </div>
 

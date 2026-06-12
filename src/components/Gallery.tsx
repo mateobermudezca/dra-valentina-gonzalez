@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { useReveal } from "@/lib/useReveal";
-import { ArrowsLeftRight } from "@phosphor-icons/react";
+import BeforeAfter from "./BeforeAfter";
 
 const cases = [
   {
@@ -34,31 +34,6 @@ export default function Gallery() {
   const sliderSectionRef = useReveal<HTMLDivElement>({ margin: "-80px" });
   const gridSectionRef = useReveal<HTMLDivElement>({ margin: "-80px" });
 
-  // Slider State (Featured Case 1)
-  const [sliderPos, setSliderPos] = useState(50);
-  const [isDragging, setIsDragging] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const handleMove = (clientX: number) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = clientX - rect.left;
-    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
-    setSliderPos(percentage);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (e.touches[0]) {
-      handleMove(e.touches[0].clientX);
-    }
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (isDragging || e.buttons === 1) {
-      handleMove(e.clientX);
-    }
-  };
-
   return (
     <section id="galeria" className="relative py-28 md:py-36 bg-surface-light-2/30 dark:bg-surface-dark/10">
       <div className="mx-auto max-w-7xl px-6">
@@ -77,72 +52,17 @@ export default function Gallery() {
           </p>
         </div>
 
-        {/* Featured Interactive Slider */}
+        {/* Featured Before/After Slider */}
         <div ref={sliderSectionRef} className="mb-20">
           <div className="text-center mb-6">
             <span className="inline-block text-xs font-semibold tracking-wider text-accent/80 uppercase">
               Caso Destacado: Desliza para comparar
             </span>
           </div>
-
-          <div
-            ref={containerRef}
-            className="relative mx-auto aspect-[16/10] max-w-4xl overflow-hidden rounded-[2rem] border border-accent/10 bg-surface-light-2 shadow-xl select-none dark:bg-surface-mid"
-            onMouseMove={handleMouseMove}
-            onMouseDown={() => setIsDragging(true)}
-            onMouseUp={() => setIsDragging(false)}
-            onMouseLeave={() => setIsDragging(false)}
-            onTouchMove={handleTouchMove}
-          >
-            {/* After Image (Full Background) */}
-            <div className="absolute inset-0 h-full w-full">
-              <Image
-                src={cases[0].after}
-                alt="Después - Diseño de Sonrisa"
-                fill
-                className="object-cover"
-                draggable={false}
-                sizes="(max-width: 1024px) 100vw, 900px"
-              />
-              <span className="absolute bottom-4 right-4 z-10 rounded-lg bg-surface-dark/60 px-3 py-1 text-xs font-medium text-white backdrop-blur-md">
-                Después
-              </span>
-            </div>
-
-            {/* Before Image (Clipped Width) */}
-            <div
-              className="absolute inset-y-0 left-0 z-20 overflow-hidden"
-              style={{ width: `${sliderPos}%` }}
-            >
-              <div className="relative h-full w-[100vw] max-w-4xl aspect-[16/10]">
-                {/* Fixed width matching parent limit so image doesn't scale as width changes */}
-                <div className="absolute inset-0 h-full w-full" style={{ width: containerRef.current?.getBoundingClientRect().width || "896px" }}>
-                  <Image
-                    src={cases[0].before}
-                    alt="Antes - Diseño de Sonrisa"
-                    fill
-                    className="object-cover"
-                    draggable={false}
-                    sizes="(max-width: 1024px) 100vw, 900px"
-                  />
-                </div>
-                <span className="absolute bottom-4 left-4 z-10 rounded-lg bg-surface-dark/60 px-3 py-1 text-xs font-medium text-white backdrop-blur-md">
-                  Antes
-                </span>
-              </div>
-            </div>
-
-            {/* Handle Line */}
-            <div
-              className="absolute inset-y-0 z-30 w-[2px] bg-white cursor-ew-resize"
-              style={{ left: `${sliderPos}%` }}
-            >
-              {/* Handle Button */}
-              <div className="absolute top-1/2 left-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-accent text-white shadow-lg shadow-accent/20 border border-white/20">
-                <ArrowsLeftRight size={18} weight="bold" />
-              </div>
-            </div>
-          </div>
+          <BeforeAfter
+            before="/images/before-1.jpg"
+            after="/images/after-1.jpg"
+          />
         </div>
 
         {/* Other Cases Crossfade Grid */}
