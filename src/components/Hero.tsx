@@ -2,7 +2,9 @@
 
 import { ArrowRight, PlayCircle, Sparkle, Swatches, TestTube } from "@phosphor-icons/react";
 import { useReveal } from "@/lib/useReveal";
-import ToothSVG from "@/components/ToothSVG";
+import dynamic from "next/dynamic";
+
+const Hero3DScene = dynamic(() => import("@/components/Hero3DScene"), { ssr: false });
 
 export default function Hero() {
   const tagRef = useReveal<HTMLSpanElement>({ delay: 200 });
@@ -15,9 +17,14 @@ export default function Hero() {
       id="inicio"
       className="relative min-h-screen overflow-hidden pt-24 flex items-center bg-surface-light-2/20 dark:bg-surface-dark/10"
     >
+      {/* Hero 3D Scene Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Hero3DScene />
+      </div>
+
       {/* Background radial glows */}
-      <div className="absolute top-1/4 left-1/10 h-[400px] w-[400px] rounded-full bg-accent/2 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/10 h-[500px] w-[500px] rounded-full bg-accent/3 blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/10 h-[400px] w-[400px] rounded-full bg-accent/2 blur-[120px] pointer-events-none z-[1]" />
+      <div className="absolute bottom-1/4 right-1/10 h-[500px] w-[500px] rounded-full bg-accent/3 blur-[140px] pointer-events-none z-[1]" />
 
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 pb-20 pt-10 md:grid-cols-12 md:pt-16 w-full relative z-10">
         
@@ -72,7 +79,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right Column: Tooth Centerpiece + Badges */}
+        {/* Right Column: Tooth Images + Badges */}
         <div className="relative flex items-center justify-center md:col-span-6 lg:col-span-5 aspect-[4/5] max-w-[400px] md:max-w-none mx-auto w-full">
           
           {/* Decorative concentric rings behind tooth */}
@@ -82,9 +89,20 @@ export default function Hero() {
             <div className="absolute w-[50%] h-[56%] rounded-full border border-accent/[0.10] dark:border-accent/[0.16]" />
           </div>
 
-          {/* Tooth SVG */}
+          {/* Tooth Images: light mode / dark mode */}
           <div className="relative w-[60%] animate-float-slow z-10">
-            <ToothSVG />
+            <img
+              src="/images/tooth-light.png"
+              alt="Diseño de sonrisa"
+              className="block dark:hidden w-full h-auto drop-shadow-2xl"
+              style={{ filter: "saturate(0.85) brightness(1.05)" }}
+            />
+            <img
+              src="/images/tooth-dark.png"
+              alt="Diseño de sonrisa"
+              className="hidden dark:block w-full h-auto drop-shadow-2xl"
+              style={{ filter: "saturate(0.9) brightness(1.1)" }}
+            />
           </div>
 
           {/* Floating Badges */}
