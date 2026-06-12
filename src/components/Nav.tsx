@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { List, X, Sun, Moon, WhatsappLogo } from "@phosphor-icons/react";
 
 const links = [
@@ -49,10 +50,16 @@ export default function Nav() {
         <div className="flex h-full items-center justify-between">
           <a
             href="#inicio"
-            className="font-display text-base md:text-lg font-bold tracking-tight text-text-light dark:text-text-dark flex items-center gap-1.5"
+            className="flex items-center gap-2.5"
           >
-            <span>Dra. Valentina González</span>
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+            <Image
+              src="/images/logo.png"
+              alt="Dra. Valentina González"
+              width={100}
+              height={36}
+              className="h-8 w-auto object-contain"
+              priority
+            />
           </a>
 
           <div className="hidden items-center gap-1 md:flex">

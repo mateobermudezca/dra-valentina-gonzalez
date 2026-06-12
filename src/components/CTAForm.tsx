@@ -56,7 +56,7 @@ export default function CTAForm() {
                   href={`https://wa.me/573126668428?text=Hola%20Dra.%20Valentina%2C%20acabo%20de%20enviar%20el%20formulario%20de%20contacto.%20Mi%20nombre%20es%20${encodeURIComponent(form.name)}%20y%20me%20interesa%20el%20servicio%20de%20${encodeURIComponent(form.service)}.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-accent-dim shadow-lg shadow-accent/15"
+                  className="inline-flex items-center gap-2 rounded-full bg-accent-dim px-6 py-3 text-sm font-semibold text-white transition-all hover:brightness-110 shadow-lg shadow-accent-dim/15"
                 >
                   <WhatsappLogo size={18} weight="fill" />
                   Priorizar cita por WhatsApp
@@ -159,7 +159,7 @@ export default function CTAForm() {
                 <div className="text-center pt-2">
                   <button
                     type="submit"
-                    className="group inline-flex items-center gap-2 rounded-full bg-accent px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-accent-dim shadow-lg shadow-accent/10"
+                    className="group inline-flex items-center gap-2 rounded-full bg-accent-dim px-8 py-3.5 text-sm font-semibold text-white transition-all hover:brightness-110 shadow-lg shadow-accent-dim/10"
                   >
                     Enviar Solicitud
                     <PaperPlaneRight

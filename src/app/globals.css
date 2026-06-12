@@ -7,9 +7,9 @@
   --color-surface-mid: oklch(0.18 0.01 30);
   --color-surface-light: oklch(0.96 0.005 85);
   --color-surface-light-2: oklch(0.99 0.003 85);
-  --color-accent: oklch(0.68 0.12 50);
-  --color-accent-dim: oklch(0.58 0.09 50);
-  --color-accent-glow: oklch(0.72 0.14 50 / 0.15);
+  --color-accent: oklch(0.75 0.08 73);
+  --color-accent-dim: oklch(0.52 0.10 60);
+  --color-accent-glow: oklch(0.75 0.08 73 / 0.15);
   --color-text-dark: oklch(0.92 0.005 85);
   --color-text-muted: oklch(0.65 0.01 50);
   --color-text-light: oklch(0.15 0.008 30);
@@ -80,10 +80,10 @@ html {
 
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 0 0 oklch(0.68 0.12 50 / 0.4);
+    box-shadow: 0 0 0 0 oklch(0.75 0.08 73 / 0.4);
   }
   50% {
-    box-shadow: 0 0 0 16px oklch(0.68 0.12 50 / 0);
+    box-shadow: 0 0 0 16px oklch(0.75 0.08 73 / 0);
   }
 }
 

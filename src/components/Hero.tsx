@@ -26,7 +26,7 @@ export default function Hero() {
           <div className="relative h-full w-full overflow-hidden rounded-[calc(2rem-0.375rem)]">
             <div className="absolute inset-0 z-10 bg-gradient-to-br from-accent/10 to-transparent pointer-events-none" />
             <Image
-              src="/images/gallery-1.jpg"
+              src="/images/dra-logo.png"
               alt="Dra. Valentina González en El Poblado, Medellín"
               fill
               className="object-cover"
@@ -66,7 +66,7 @@ export default function Hero() {
           <div ref={ctaRef} className="flex flex-wrap items-center gap-4">
             <a
               href="#contacto"
-              className="group inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-white transition-all hover:bg-accent-dim"
+              className="group inline-flex items-center gap-2 rounded-full bg-accent-dim px-7 py-3.5 text-sm font-semibold text-white transition-all hover:brightness-110"
             >
               Agenda tu cita
               <ArrowRight
