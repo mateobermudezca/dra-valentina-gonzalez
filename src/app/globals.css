@@ -129,3 +129,40 @@ html {
   100% { transform: rotate(360deg) translateX(55%) rotate(-360deg); }
 }
 
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes morphBlob {
+  0%, 100% { border-radius: 60% 40% 45% 55% / 55% 45% 55% 45%; }
+  25% { border-radius: 45% 55% 50% 50% / 60% 40% 55% 45%; }
+  50% { border-radius: 50% 50% 40% 60% / 45% 55% 50% 50%; }
+  75% { border-radius: 55% 45% 55% 45% / 50% 50% 45% 55%; }
+}
+
+.animate-morph-blob {
+  animation: morphBlob 20s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 30s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-morph-blob,
+  .animate-spin-slow,
+  .animate-float {
+    animation: none;
+  }
+}
+
