@@ -31,7 +31,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen overflow-hidden pt-24 flex items-center bg-surface-light-2/20"
+      className="relative min-h-screen overflow-hidden pt-24 flex items-center"
     >
       {/* Hero 3D Scene Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">

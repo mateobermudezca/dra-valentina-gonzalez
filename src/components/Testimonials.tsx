@@ -158,7 +158,7 @@ export default function Testimonials() {
   }, [halfTrack]);
 
   return (
-    <section className="relative overflow-hidden py-28 md:py-36 bg-[#FAF7F2] selection:bg-[#C9A86C]/20 selection:text-[#1A1A1A]">
+    <section className="relative overflow-hidden py-28 md:py-36 selection:bg-[#C9A86C]/20 selection:text-[#1A1A1A]">
       <div className="absolute inset-0 pointer-events-none z-0" aria-hidden="true">
         <div
           className="absolute inset-0 opacity-50"
@@ -372,8 +372,6 @@ export default function Testimonials() {
           </div>
         </div>
       </div>
-      {/* Fade transition to next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-[2]" aria-hidden="true" style={{ background: "linear-gradient(to top, transparent, #FAF7F2)" }} />
     </section>
   );
 }

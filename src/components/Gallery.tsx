@@ -35,7 +35,7 @@ export default function Gallery() {
   const gridSectionRef = useReveal<HTMLDivElement>({ margin: "-80px" });
 
   return (
-    <section id="galeria" className="relative py-28 md:py-36 bg-surface-light-2/30">
+    <section id="galeria" className="relative py-28 md:py-36">
       <div className="mx-auto max-w-7xl px-6">
         
         {/* Header */}

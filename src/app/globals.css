@@ -150,10 +150,12 @@ html {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-morph-blob,
-  .animate-spin-slow,
-  .animate-float {
-    animation: none;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 

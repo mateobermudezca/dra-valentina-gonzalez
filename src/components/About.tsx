@@ -58,11 +58,8 @@ export default function About() {
     <section
       id="sobre-mi"
       ref={sectionRef}
-      className="relative min-h-screen overflow-hidden flex items-center bg-[#FAF7F2] py-24 lg:py-0 selection:bg-[#C9A86C]/20 selection:text-[#1A1A1A]"
+      className="relative min-h-screen overflow-hidden flex items-center py-24 lg:py-0 selection:bg-[#C9A86C]/20 selection:text-[#1A1A1A]"
     >
-      {/* Fade transition from previous section */}
-      <div className="absolute top-0 left-0 right-0 h-32 pointer-events-none z-[2]" aria-hidden="true" style={{ background: "linear-gradient(to bottom, transparent, #FAF7F2)" }} />
-
       {/* Decorative background */}
       <div className="absolute inset-0 pointer-events-none z-0" aria-hidden="true">
         <div
@@ -133,30 +130,26 @@ export default function About() {
               }`}
             >
               <div className="relative mx-auto max-w-[320px] sm:max-w-[400px] lg:max-w-[480px]">
-                {/* Image blob container */}
-                <div
-                  className="relative overflow-hidden shadow-2xl border-2 border-white/50
-                    max-sm:rounded-3xl
-                    rounded-[60%_40%_45%_55%/55%_45%_55%_45%]
-                    animate-morph-blob aspect-[3/4]"
-                >
-                  <div className="relative w-full h-full">
-                    <Image
-                      src="/images/dra-logo.png"
-                      alt="Dra. Valentina González Cruz, odontóloga estética"
-                      fill
-                      className="object-cover object-top transition-transform duration-700 hover:scale-105 cursor-pointer"
-                      sizes="(max-width: 640px) 320px, (max-width: 1024px) 400px, 480px"
-                      quality={90}
-                      loading="lazy"
-                    />
-                    <div
-                      className="absolute inset-0 pointer-events-none"
-                      style={{
-                        background: "linear-gradient(to top, rgba(201,168,108,0.15) 0%, transparent 40%)",
-                      }}
-                    />
+                {/* Image circle container */}
+                <div className="relative flex items-center justify-center">
+                  <div
+                    className="w-full aspect-square rounded-full shadow-2xl overflow-hidden"
+                    style={{ backgroundColor: "#C9A86C" }}
+                  >
+                    <div className="relative w-full h-full">
+                      <Image
+                        src="/images/dra-logo.png"
+                        alt="Dra. Valentina González Cruz, odontóloga estética"
+                        fill
+                        className="object-cover object-top transition-transform duration-700 hover:scale-105 cursor-pointer"
+                        sizes="(max-width: 640px) 320px, (max-width: 1024px) 400px, 480px"
+                        quality={90}
+                        loading="lazy"
+                      />
+                    </div>
                   </div>
+                  {/* Gold ring accent */}
+                  <div className="absolute inset-0 rounded-full ring-2 ring-[#C9A86C]/20 pointer-events-none" />
                 </div>
 
                 {/* Floating decorative ring */}
@@ -270,6 +263,25 @@ export default function About() {
             </div>
           </div>
         </div>
+      </div>
+      {/* Floating particles */}
+      <div className="absolute inset-0 pointer-events-none z-[3] overflow-hidden" aria-hidden="true">
+        {Array.from({ length: 20 }, (_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full"
+            style={{
+              width: `${Math.random() * 4 + 2}px`,
+              height: `${Math.random() * 4 + 2}px`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              backgroundColor: i % 3 === 0 ? "#C9A86C" : i % 3 === 1 ? "#D4AF7A" : "#E8D5B7",
+              opacity: Math.random() * 0.4 + 0.15,
+              animation: `float ${Math.random() * 3 + 3}s ease-in-out ${Math.random() * 4}s infinite`,
+              willChange: "transform",
+            }}
+          />
+        ))}
       </div>
     </section>
   );
