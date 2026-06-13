@@ -247,7 +247,14 @@ export default function Testimonials() {
               setTimeout(() => { isPausedRef.current = false; }, 800);
             }}
           >
-            <div ref={containerRef} className="overflow-hidden rounded-2xl">
+            <div
+                ref={containerRef}
+                className="overflow-hidden rounded-2xl"
+                style={{
+                  maskImage: "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
+                  WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
+                }}
+              >
               <div
                 ref={trackRef}
                 className="flex gap-6 will-change-transform"
