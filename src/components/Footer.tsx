@@ -8,10 +8,10 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex flex-col items-center gap-8 md:flex-row md:justify-between">
           <div className="text-center md:text-left">
-            <span className="font-display text-lg font-bold tracking-tight text-text-light dark:text-text-dark">
+            <span className="font-display text-lg font-bold tracking-tight text-text-light">
               Dra. Valentina González
             </span>
-            <p className="mt-1 text-xs text-text-light/50 dark:text-text-dark/50 leading-relaxed">
+            <p className="mt-1 text-xs text-text-light/50 leading-relaxed">
               Odontología Estética & Diseño de Sonrisa <br />
               Calle 19a #44-25, El Poblado, Medellín · Consultorio 1701-1702
             </p>
@@ -22,7 +22,7 @@ export default function Footer() {
               href="https://instagram.com/dravalentinagonzalez"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-xl border border-accent/10 text-text-light/50 transition-colors hover:border-accent/30 hover:text-accent dark:text-text-dark/50"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-accent/10 text-text-light/50 transition-colors hover:border-accent/30 hover:text-accent"
               aria-label="Instagram"
             >
               <InstagramLogo size={18} weight="light" />
@@ -31,7 +31,7 @@ export default function Footer() {
               href="https://wa.me/573126668428?text=Hola%20Dra.%20Valentina%20Gonz%C3%A1lez%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n."
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-xl border border-accent/10 text-text-light/50 transition-colors hover:border-accent/30 hover:text-accent dark:text-text-dark/50"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-accent/10 text-text-light/50 transition-colors hover:border-accent/30 hover:text-accent"
               aria-label="WhatsApp"
             >
               <WhatsappLogo size={18} weight="light" />
@@ -39,7 +39,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-accent/5 pt-6 text-center text-[11px] text-text-light/40 dark:text-text-dark/40">
+        <div className="mt-10 border-t border-accent/5 pt-6 text-center text-[11px] text-text-light/40">
           &copy; {new Date().getFullYear()} Dra. Valentina González. Todos los derechos reservados.
         </div>
       </div>

@@ -31,7 +31,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen overflow-hidden pt-24 flex items-center bg-surface-light-2/20 dark:bg-surface-dark/10"
+      className="relative min-h-screen overflow-hidden pt-24 flex items-center bg-surface-light-2/20"
     >
       {/* Hero 3D Scene Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -58,7 +58,7 @@ export default function Hero() {
 
           <h1
             ref={titleRef}
-            className="font-display text-4xl leading-[1.1] tracking-tight md:text-5xl lg:text-7xl text-text-light dark:text-text-dark font-light"
+            className="font-display text-4xl leading-[1.1] tracking-tight md:text-5xl lg:text-7xl text-text-light font-light"
           >
             Sonrisas naturales <br />
             diseñadas para inspirar <br />
@@ -67,7 +67,7 @@ export default function Hero() {
 
           <p
             ref={descRef}
-            className="max-w-lg text-base md:text-lg leading-relaxed text-text-light/65 dark:text-text-dark/65"
+            className="max-w-lg text-base md:text-lg leading-relaxed text-text-light/65"
           >
             Especialistas en Diseño de Sonrisa y carillas de porcelana de alta precisión.
             Transformamos tu expresión con arte dental y tecnología digital avanzada en Medellín.
@@ -87,7 +87,7 @@ export default function Hero() {
             </a>
             <a
               href="#galeria"
-              className="group inline-flex items-center gap-2 rounded-full border border-accent/20 px-7 py-3.5 text-sm font-semibold text-text-light/80 dark:text-text-dark/80 transition-all hover:border-accent/40 hover:text-accent"
+              className="group inline-flex items-center gap-2 rounded-full border border-accent/20 px-7 py-3.5 text-sm font-semibold text-text-light/80 transition-all hover:border-accent/40 hover:text-accent"
             >
               <PlayCircle size={18} weight="light" />
               Ver casos de éxito
@@ -100,9 +100,9 @@ export default function Hero() {
           
           {/* Decorative concentric rings behind tooth */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="w-[85%] h-[90%] rounded-full border border-accent/[0.04] dark:border-accent/[0.08]" />
-            <div className="absolute w-[68%] h-[75%] rounded-full border border-accent/[0.07] dark:border-accent/[0.12]" />
-            <div className="absolute w-[50%] h-[56%] rounded-full border border-accent/[0.10] dark:border-accent/[0.16]" />
+            <div className="w-[85%] h-[90%] rounded-full border border-accent/[0.04]" />
+            <div className="absolute w-[68%] h-[75%] rounded-full border border-accent/[0.07]" />
+            <div className="absolute w-[50%] h-[56%] rounded-full border border-accent/[0.10]" />
           </div>
 
           {/* Logo with 3D Tilt & Dramatic Glow */}
@@ -115,8 +115,8 @@ export default function Hero() {
           >
             {/* Dramatic background glow layers */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-full aspect-square rounded-full bg-accent/15 dark:bg-accent/20 blur-[80px] scale-150 animate-pulse-glow" />
-              <div className="absolute w-[70%] aspect-square rounded-full bg-accent/10 dark:bg-accent/15 blur-[60px] scale-125" />
+              <div className="w-full aspect-square rounded-full bg-accent/15 blur-[80px] scale-150 animate-pulse-glow" />
+              <div className="absolute w-[70%] aspect-square rounded-full bg-accent/10 blur-[60px] scale-125" />
             </div>
 
             {/* Logo with 3D transform and float */}

@@ -60,11 +60,11 @@ export default function Services() {
           <span className="inline-block rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 text-xs font-semibold tracking-widest text-accent uppercase">
             Tratamientos
           </span>
-          <h2 className="mt-6 font-display text-3xl leading-tight tracking-tight md:text-5xl text-text-light dark:text-text-dark font-light">
+          <h2 className="mt-6 font-display text-3xl leading-tight tracking-tight md:text-5xl text-text-light font-light">
             Cada sonrisa tiene su propio <br className="hidden md:inline" />
             <span className="font-bold text-accent">plan maestro.</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-lg text-text-light/60 dark:text-text-dark/60">
+          <p className="mx-auto mt-4 max-w-lg text-text-light/60">
             Desde el diagnóstico digital en El Poblado hasta el resultado final, creamos armonía a tu medida.
           </p>
         </div>
@@ -85,7 +85,7 @@ function Card({ service, index }: { service: (typeof services)[number]; index: n
   return (
     <div
       ref={ref}
-      className={`group relative overflow-hidden rounded-3xl border border-accent/5 bg-surface-light-2/80 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 dark:bg-surface-mid/50 flex flex-col ${service.gridSpan} ${
+      className={`group relative overflow-hidden rounded-3xl border border-accent/5 bg-surface-light-2/80 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 flex flex-col ${service.gridSpan} ${
         service.isLarge ? "md:flex-row" : ""
       }`}
     >
@@ -116,10 +116,10 @@ function Card({ service, index }: { service: (typeof services)[number]; index: n
         }`}
       >
         <div className="space-y-3">
-          <h3 className="font-display text-xl font-bold text-text-light dark:text-text-dark">
+          <h3 className="font-display text-xl font-bold text-text-light">
             {service.title}
           </h3>
-          <p className="text-sm leading-relaxed text-text-light/65 dark:text-text-dark/65">
+          <p className="text-sm leading-relaxed text-text-light/65">
             {service.description}
           </p>
         </div>
@@ -128,7 +128,7 @@ function Card({ service, index }: { service: (typeof services)[number]; index: n
           {service.features.map((f) => (
             <li
               key={f}
-              className="flex items-center gap-2 text-xs font-semibold text-text-light/50 dark:text-text-dark/50"
+              className="flex items-center gap-2 text-xs font-semibold text-text-light/50"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-accent" />
               {f}

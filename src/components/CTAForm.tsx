@@ -36,7 +36,7 @@ export default function CTAForm() {
       <div className="mx-auto max-w-7xl px-6">
         <div
           ref={ref}
-          className="relative overflow-hidden rounded-3xl border border-accent/10 bg-gradient-to-br from-accent/5 via-surface-light-2 to-surface-light-2 p-8 shadow-xl shadow-accent/5 md:p-16 dark:from-accent/3 dark:via-surface-dark dark:to-surface-dark"
+          className="relative overflow-hidden rounded-3xl border border-accent/10 bg-gradient-to-br from-accent/5 via-surface-light-2 to-surface-light-2 p-8 shadow-xl shadow-accent/5 md:p-16"
         >
           <div className="absolute top-0 right-0 h-64 w-64 translate-x-1/3 -translate-y-1/3 rounded-full bg-accent/5 blur-3xl" />
           <div className="absolute bottom-0 left-0 h-48 w-48 -translate-x-1/4 translate-y-1/4 rounded-full bg-accent/3 blur-3xl" />
@@ -44,10 +44,10 @@ export default function CTAForm() {
           {submitted ? (
             <div className="flex flex-col items-center justify-center py-16 text-center transition-all z-10 relative">
               <CheckCircle size={48} weight="light" className="text-accent" />
-              <h3 className="mt-6 font-display text-2xl font-bold text-text-light dark:text-text-dark">
+              <h3 className="mt-6 font-display text-2xl font-bold text-text-light">
                 ¡Solicitud Recibida!
               </h3>
-              <p className="mt-2 max-w-md text-sm leading-relaxed text-text-light/65 dark:text-text-dark/65">
+              <p className="mt-2 max-w-md text-sm leading-relaxed text-text-light/65">
                 Gracias, <strong>{form.name}</strong>. La Dra. Valentina revisará tu solicitud de valoración para <strong>{form.service}</strong> y te contactaremos en menos de 24 horas hábiles.
               </p>
               
@@ -66,7 +66,7 @@ export default function CTAForm() {
                     setSubmitted(false);
                     setForm({ name: "", email: "", phone: "", service: "", isInternational: "", message: "" });
                   }}
-                  className="rounded-full border border-accent/20 px-6 py-3 text-sm font-semibold text-text-light/70 transition-colors hover:bg-accent/10 dark:text-text-dark/70"
+                  className="rounded-full border border-accent/20 px-6 py-3 text-sm font-semibold text-text-light/70 transition-colors hover:bg-accent/10"
                 >
                   Enviar otra solicitud
                 </button>
@@ -78,11 +78,11 @@ export default function CTAForm() {
                 <span className="inline-block rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 text-xs font-semibold tracking-widest text-accent uppercase">
                   Agendamiento
                 </span>
-                <h2 className="mt-6 font-display text-3xl leading-tight tracking-tight md:text-5xl text-text-light dark:text-text-dark font-light">
+                <h2 className="mt-6 font-display text-3xl leading-tight tracking-tight md:text-5xl text-text-light font-light">
                   Comienza tu <br />
                   <span className="font-bold text-accent">transformación.</span>
                 </h2>
-                <p className="mx-auto mt-3 max-w-md text-sm text-text-light/60 dark:text-text-dark/60">
+                <p className="mx-auto mt-3 max-w-md text-sm text-text-light/60">
                   Cuéntanos qué tratamiento te interesa y diseñemos juntos la sonrisa que mereces.
                 </p>
               </div>
@@ -95,7 +95,7 @@ export default function CTAForm() {
                     required
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="w-full rounded-xl border border-accent/10 bg-white/50 px-5 py-3.5 text-sm text-text-light placeholder:text-text-light/35 transition-all focus:border-accent/30 focus:outline-none focus:ring-2 focus:ring-accent/10 dark:bg-white/5 dark:text-text-dark dark:placeholder:text-text-dark/35"
+                    className="w-full rounded-xl border border-accent/10 bg-white/50 px-5 py-3.5 text-sm text-text-light placeholder:text-text-light/35 transition-all focus:border-accent/30 focus:outline-none focus:ring-2 focus:ring-accent/10"
                   />
                   <input
                     type="email"
@@ -103,7 +103,7 @@ export default function CTAForm() {
                     required
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full rounded-xl border border-accent/10 bg-white/50 px-5 py-3.5 text-sm text-text-light placeholder:text-text-light/35 transition-all focus:border-accent/30 focus:outline-none focus:ring-2 focus:ring-accent/10 dark:bg-white/5 dark:text-text-dark dark:placeholder:text-text-dark/35"
+                    className="w-full rounded-xl border border-accent/10 bg-white/50 px-5 py-3.5 text-sm text-text-light placeholder:text-text-light/35 transition-all focus:border-accent/30 focus:outline-none focus:ring-2 focus:ring-accent/10"
                   />
                 </div>
 
@@ -114,13 +114,13 @@ export default function CTAForm() {
                     required
                     value={form.phone}
                     onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    className="w-full rounded-xl border border-accent/10 bg-white/50 px-5 py-3.5 text-sm text-text-light placeholder:text-text-light/35 transition-all focus:border-accent/30 focus:outline-none focus:ring-2 focus:ring-accent/10 dark:bg-white/5 dark:text-text-dark dark:placeholder:text-text-dark/35"
+                    className="w-full rounded-xl border border-accent/10 bg-white/50 px-5 py-3.5 text-sm text-text-light placeholder:text-text-light/35 transition-all focus:border-accent/30 focus:outline-none focus:ring-2 focus:ring-accent/10"
                   />
                   <select
                     required
                     value={form.isInternational}
                     onChange={(e) => setForm({ ...form, isInternational: e.target.value })}
-                    className="w-full rounded-xl border border-accent/10 bg-white/50 px-5 py-3.5 text-sm text-text-light transition-all focus:border-accent/30 focus:outline-none focus:ring-2 focus:ring-accent/10 dark:bg-white/5 dark:text-text-dark"
+                    className="w-full rounded-xl border border-accent/10 bg-white/50 px-5 py-3.5 text-sm text-text-light transition-all focus:border-accent/30 focus:outline-none focus:ring-2 focus:ring-accent/10"
                   >
                     <option value="" disabled>
                       ¿Dónde te encuentras?
@@ -135,7 +135,7 @@ export default function CTAForm() {
                     required
                     value={form.service}
                     onChange={(e) => setForm({ ...form, service: e.target.value })}
-                    className="w-full rounded-xl border border-accent/10 bg-white/50 px-5 py-3.5 text-sm text-text-light transition-all focus:border-accent/30 focus:outline-none focus:ring-2 focus:ring-accent/10 dark:bg-white/5 dark:text-text-dark"
+                    className="w-full rounded-xl border border-accent/10 bg-white/50 px-5 py-3.5 text-sm text-text-light transition-all focus:border-accent/30 focus:outline-none focus:ring-2 focus:ring-accent/10"
                   >
                     <option value="" disabled>
                       Tratamiento de Interés
@@ -153,7 +153,7 @@ export default function CTAForm() {
                   rows={4}
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full resize-none rounded-xl border border-accent/10 bg-white/50 px-5 py-3.5 text-sm text-text-light placeholder:text-text-light/35 transition-all focus:border-accent/30 focus:outline-none focus:ring-2 focus:ring-accent/10 dark:bg-white/5 dark:text-text-dark dark:placeholder:text-text-dark/35"
+                  className="w-full resize-none rounded-xl border border-accent/10 bg-white/50 px-5 py-3.5 text-sm text-text-light placeholder:text-text-light/35 transition-all focus:border-accent/30 focus:outline-none focus:ring-2 focus:ring-accent/10"
                 />
 
                 <div className="text-center pt-2">

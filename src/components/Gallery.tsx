@@ -35,7 +35,7 @@ export default function Gallery() {
   const gridSectionRef = useReveal<HTMLDivElement>({ margin: "-80px" });
 
   return (
-    <section id="galeria" className="relative py-28 md:py-36 bg-surface-light-2/30 dark:bg-surface-dark/10">
+    <section id="galeria" className="relative py-28 md:py-36 bg-surface-light-2/30">
       <div className="mx-auto max-w-7xl px-6">
         
         {/* Header */}
@@ -43,11 +43,11 @@ export default function Gallery() {
           <span className="inline-block rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 text-xs font-semibold tracking-widest text-accent uppercase">
             Casos de Éxito
           </span>
-          <h2 className="mt-6 font-display text-3xl leading-tight tracking-tight md:text-5xl text-text-light dark:text-text-dark font-light">
+          <h2 className="mt-6 font-display text-3xl leading-tight tracking-tight md:text-5xl text-text-light font-light">
             Historias escritas en <br className="hidden md:inline" />
             <span className="font-bold text-accent">cada sonrisa.</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-lg text-text-light/60 dark:text-text-dark/60">
+          <p className="mx-auto mt-4 max-w-lg text-text-light/60">
             Descubre las transformaciones reales de nuestros pacientes. Resultados naturales que devuelven la seguridad.
           </p>
         </div>
@@ -92,7 +92,7 @@ function CrossfadeCard({ c, delay }: { c: (typeof cases)[number]; delay: number 
   return (
     <div
       ref={ref}
-      className="group relative overflow-hidden rounded-3xl border border-accent/5 bg-surface-light-2/80 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-accent/15 dark:bg-surface-mid/50"
+      className="group relative overflow-hidden rounded-3xl border border-accent/5 bg-surface-light-2/80 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-accent/15"
       onMouseEnter={() => setActive(true)}
       onMouseLeave={() => setActive(false)}
       onTouchStart={() => setActive(!active)}
@@ -141,10 +141,10 @@ function CrossfadeCard({ c, delay }: { c: (typeof cases)[number]; delay: number 
 
       {/* Description Box */}
       <div className="p-6 space-y-2">
-        <h3 className="font-display text-lg font-bold text-text-light dark:text-text-dark">
+        <h3 className="font-display text-lg font-bold text-text-light">
           {c.title}
         </h3>
-        <p className="text-xs leading-relaxed text-text-light/60 dark:text-text-dark/60">
+        <p className="text-xs leading-relaxed text-text-light/60">
           {c.description}
         </p>
       </div>

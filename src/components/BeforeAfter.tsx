@@ -117,10 +117,10 @@ export default function BeforeAfter({
 
       {/* Labels */}
       <div className="mx-auto mt-3 flex max-w-2xl justify-between px-1">
-        <span className="text-xs font-semibold tracking-widest text-text-light/50 uppercase dark:text-text-dark/50">
+        <span className="text-xs font-semibold tracking-widest text-text-light/50 uppercase">
           {beforeLabel}
         </span>
-        <span className="text-xs font-semibold tracking-widest text-text-light/50 uppercase dark:text-text-dark/50">
+        <span className="text-xs font-semibold tracking-widest text-text-light/50 uppercase">
           {afterLabel}
         </span>
       </div>

@@ -349,7 +349,7 @@ export default function Testimonials() {
             style={{ transitionDelay: "900ms" }}
           >
             <a
-              href="https://search.google.com/local/writereview?placeid=0x8e4429000f8f5345:0x6d1d54d8f119b03b"
+              href="https://www.google.com/maps/place/Dra.+Valentina+González/@6.2220632,-75.5772869,17z/data=!4m8!3m7!1s0x8e4429000f8f5345:0x6d1d54d8f119b03b!8m2!3d6.2220632!4d-75.574712!9m1!1b1!16s%2Fg%2F11w83vns0r"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#C9A86C] text-white font-semibold text-sm tracking-wide transition-all duration-500 hover:bg-[#B8944F] hover:shadow-lg hover:shadow-[#C9A86C]/25 hover:-translate-y-0.5 overflow-hidden"
@@ -372,6 +372,8 @@ export default function Testimonials() {
           </div>
         </div>
       </div>
+      {/* Fade transition to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-[2]" aria-hidden="true" style={{ background: "linear-gradient(to top, transparent, #FAF7F2)" }} />
     </section>
   );
 }

@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@variant dark (&:where(.dark, .dark *));
-
 @theme inline {
   --color-surface-dark: oklch(0.13 0.008 30);
   --color-surface-mid: oklch(0.18 0.01 30);
@@ -23,13 +21,6 @@ body {
   font-family: var(--font-body), sans-serif;
   background-color: var(--color-surface-light-2);
   color: var(--color-text-light);
-  transition: background-color 0.4s ease, color 0.4s ease;
-}
-
-.dark body,
-body.dark {
-  background-color: var(--color-surface-dark);
-  color: var(--color-text-dark);
 }
 
 html {

@@ -60,6 +60,9 @@ export default function About() {
       ref={sectionRef}
       className="relative min-h-screen overflow-hidden flex items-center bg-[#FAF7F2] py-24 lg:py-0 selection:bg-[#C9A86C]/20 selection:text-[#1A1A1A]"
     >
+      {/* Fade transition from previous section */}
+      <div className="absolute top-0 left-0 right-0 h-32 pointer-events-none z-[2]" aria-hidden="true" style={{ background: "linear-gradient(to bottom, transparent, #FAF7F2)" }} />
+
       {/* Decorative background */}
       <div className="absolute inset-0 pointer-events-none z-0" aria-hidden="true">
         <div
