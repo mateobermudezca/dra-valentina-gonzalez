@@ -80,5 +80,9 @@
 - `public/images/dra-logo.png`: Foto Dra. con logo superpuesto, fondo transparente
 - `public/images/before-1.jpg` / `public/images/after-1.jpg`: Par antes/después para slider
 - `public/images/gallery-{1..6}.jpg`: Galería original
+- `src/components/About.tsx`: "Sobre Mi" rediseñado — blob image, glassmorphism stats, SVG decorative line, staggered reveals, useScrollReveal + useCountUp
+- `src/components/Testimonials.tsx`: Carrusel horizontal con 8 testimonios, auto-rotación 6s, swipe, paginación, tarjetas glassmorphism con estrellas doradas
+- `src/hooks/useScrollReveal.ts`: Hook scroll-reveal genérico con IntersectionObserver (usado por About y Testimonials)
+- `src/hooks/useCountUp.ts`: Hook contador animado con requestAnimationFrame (usado por About)
 - `.agents/skills/3d-web-experience/SKILL.md`: Skill de 3D web (Three.js, R3F, Spline) — leído para guiar implementación
-- `src/lib/useReveal.ts`: Hook scroll-reveal con Intersection Observer
+- `src/lib/useReveal.ts`: Hook scroll-reveal legacy (usado por Hero, Services, Gallery, CTAForm)

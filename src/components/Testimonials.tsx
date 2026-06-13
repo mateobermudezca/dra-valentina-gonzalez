@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
-import { Star, CaretLeft, CaretRight, Quotes } from "@phosphor-icons/react";
+import { useState, useEffect, useRef } from "react";
+import { Star, Quotes } from "@phosphor-icons/react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+
+const SCROLL_SPEED = 0.8;
 
 type Testimonial = {
   quote: string;
@@ -84,13 +86,19 @@ export default function Testimonials() {
   const { ref: lineRef, isVisible: lineVisible } = useScrollReveal<HTMLDivElement>(0.15);
   const { ref: carouselRevealRef, isVisible: carouselVisible } = useScrollReveal<HTMLDivElement>(0.1);
 
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   const [cardWidthPct, setCardWidthPct] = useState(55);
   const [containerWidth, setContainerWidth] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const touchStartX = useRef(0);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const offsetRef = useRef(0);
+  const rafRef = useRef<number>(0);
+  const isPausedRef = useRef(false);
+  const cardWidthRef = useRef(0);
+  const halfTrackRef = useRef(0);
+
+  const duplicated = [...testimonials, ...testimonials];
   const totalCards = testimonials.length;
+  const gapPx = 24;
 
   useEffect(() => {
     const lg = window.matchMedia("(min-width: 1024px)");
@@ -121,42 +129,30 @@ export default function Testimonials() {
     return () => ro.disconnect();
   }, []);
 
-  const gapPx = 24;
   const cardWidth = containerWidth * (cardWidthPct / 100);
-  const offset =
-    -(activeIndex * (cardWidth + gapPx)) + (containerWidth - cardWidth) / 2;
+  const halfTrack = totalCards * (cardWidth + gapPx);
 
   useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % totalCards);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, [isPaused, totalCards]);
+    cardWidthRef.current = cardWidth;
+    halfTrackRef.current = halfTrack;
+  }, [cardWidth, halfTrack]);
 
-  const goTo = useCallback((index: number) => {
-    setActiveIndex(index);
-  }, []);
-
-  const goNext = useCallback(() => {
-    setActiveIndex((prev) => (prev + 1) % totalCards);
-  }, [totalCards]);
-
-  const goPrev = useCallback(() => {
-    setActiveIndex((prev) => (prev - 1 + totalCards) % totalCards);
-  }, [totalCards]);
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    const diff = e.changedTouches[0].clientX - touchStartX.current;
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) goPrev();
-      else goNext();
-    }
-  };
+  useEffect(() => {
+    const animate = () => {
+      if (!isPausedRef.current) {
+        offsetRef.current += SCROLL_SPEED;
+        if (offsetRef.current >= halfTrackRef.current) {
+          offsetRef.current = 0;
+        }
+        if (trackRef.current) {
+          trackRef.current.style.transform = `translateX(${-offsetRef.current}px)`;
+        }
+      }
+      rafRef.current = requestAnimationFrame(animate);
+    };
+    rafRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [halfTrack]);
 
   return (
     <section className="relative overflow-hidden py-28 md:py-36 bg-[#FAF7F2] selection:bg-[#C9A86C]/20 selection:text-[#1A1A1A]">
@@ -243,25 +239,24 @@ export default function Testimonials() {
           style={{ transitionDelay: "450ms" }}
         >
           <div
-            className="relative"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
+            className="relative select-none"
+            onMouseEnter={() => { isPausedRef.current = true; }}
+            onMouseLeave={() => { isPausedRef.current = false; }}
+            onTouchStart={() => { isPausedRef.current = true; }}
+            onTouchEnd={() => {
+              setTimeout(() => { isPausedRef.current = false; }, 800);
+            }}
           >
             <div ref={containerRef} className="overflow-hidden rounded-2xl">
               <div
-                className="flex gap-6 transition-transform duration-500 ease-out will-change-transform"
-                style={{ transform: `translateX(${offset}px)` }}
+                ref={trackRef}
+                className="flex gap-6 will-change-transform"
+                style={{ transform: "translateX(0px)" }}
               >
-                {testimonials.map((t, i) => (
+                {duplicated.map((t, i) => (
                   <div
-                    key={t.name}
-                    className={`flex-shrink-0 transition-all duration-500 ease-out ${
-                      i === activeIndex
-                        ? "opacity-100 scale-100"
-                        : "opacity-40 scale-95"
-                    }`}
+                    key={`${t.name}-${i}`}
+                    className="flex-shrink-0"
                     style={{ width: `${cardWidthPct}%` }}
                   >
                     <div className="group relative h-full bg-white/60 backdrop-blur-sm border border-[#C9A86C]/10 rounded-2xl p-8 transition-all duration-500 hover:bg-white/80 hover:shadow-lg hover:shadow-[#C9A86C]/5 hover:-translate-y-1 overflow-hidden">
@@ -309,43 +304,6 @@ export default function Testimonials() {
                 ))}
               </div>
             </div>
-
-            <button
-              onClick={goPrev}
-              className="hidden sm:flex absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm border border-[#C9A86C]/20 items-center justify-center text-[#C9A86C] transition-all duration-300 hover:bg-[#C9A86C] hover:text-white hover:shadow-lg hover:shadow-[#C9A86C]/20"
-              aria-label="Testimonio anterior"
-            >
-              <CaretLeft size={18} weight="bold" />
-            </button>
-
-            <button
-              onClick={goNext}
-              className="hidden sm:flex absolute right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm border border-[#C9A86C]/20 items-center justify-center text-[#C9A86C] transition-all duration-300 hover:bg-[#C9A86C] hover:text-white hover:shadow-lg hover:shadow-[#C9A86C]/20"
-              aria-label="Testimonio siguiente"
-            >
-              <CaretRight size={18} weight="bold" />
-            </button>
-          </div>
-
-          <div
-            className="flex justify-center gap-2 mt-10"
-            role="tablist"
-            aria-label="Navegación de testimonios"
-          >
-            {testimonials.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => goTo(i)}
-                className={`h-2 rounded-full transition-all duration-500 ${
-                  i === activeIndex
-                    ? "w-8 bg-[#C9A86C]"
-                    : "w-2 bg-[#C9A86C]/30"
-                }`}
-                aria-label={`Ir al testimonio ${i + 1}`}
-                role="tab"
-                aria-selected={i === activeIndex}
-              />
-            ))}
           </div>
         </div>
       </div>
