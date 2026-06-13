@@ -87,6 +87,7 @@ export default function Testimonials() {
   const { ref: carouselRevealRef, isVisible: carouselVisible } = useScrollReveal<HTMLDivElement>(0.1);
   const { ref: lineRef2, isVisible: lineVisible2 } = useScrollReveal<HTMLDivElement>(0.15);
   const { ref: copyRef, isVisible: copyVisible } = useScrollReveal<HTMLParagraphElement>(0.15);
+  const { ref: btnRef, isVisible: btnVisible } = useScrollReveal<HTMLDivElement>(0.15);
 
   const [cardWidthPct, setCardWidthPct] = useState(55);
   const [containerWidth, setContainerWidth] = useState(0);
@@ -339,6 +340,36 @@ export default function Testimonials() {
               Tú puedes ser la próxima.
             </span>
           </p>
+
+          <div
+            ref={btnRef}
+            className={`flex justify-center mt-8 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              btnVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            }`}
+            style={{ transitionDelay: "900ms" }}
+          >
+            <a
+              href="https://search.google.com/local/writereview?placeid=0x8e4429000f8f5345:0x6d1d54d8f119b03b"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#C9A86C] text-white font-semibold text-sm tracking-wide transition-all duration-500 hover:bg-[#B8944F] hover:shadow-lg hover:shadow-[#C9A86C]/25 hover:-translate-y-0.5 overflow-hidden"
+              style={{ fontFamily: "var(--font-body)" }}
+            >
+              <span className="relative z-[1]">Dejar una reseña en Google</span>
+              <svg
+                className="relative z-[1] w-5 h-5 transition-transform duration-500 group-hover:translate-x-0.5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+              >
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
+              <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-500" />
+            </a>
+          </div>
         </div>
       </div>
     </section>
