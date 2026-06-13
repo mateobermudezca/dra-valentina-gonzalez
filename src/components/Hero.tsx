@@ -3,6 +3,7 @@
 import { ArrowRight, PlayCircle, Sparkle, Swatches, TestTube } from "@phosphor-icons/react";
 import { useReveal } from "@/lib/useReveal";
 import dynamic from "next/dynamic";
+import { useRef, useCallback } from "react";
 
 const Hero3DScene = dynamic(() => import("@/components/Hero3DScene"), { ssr: false });
 
@@ -11,6 +12,21 @@ export default function Hero() {
   const titleRef = useReveal<HTMLHeadingElement>({ delay: 350, margin: "-80px" });
   const descRef = useReveal<HTMLParagraphElement>({ delay: 500, margin: "-80px" });
   const ctaRef = useReveal<HTMLDivElement>({ delay: 650, margin: "-80px" });
+
+  const logoRef = useRef<HTMLDivElement>(null);
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (!logoRef.current) return;
+    const rect = logoRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    logoRef.current.style.setProperty("--rotate-x", `${-y * 20}deg`);
+    logoRef.current.style.setProperty("--rotate-y", `${x * 20}deg`);
+  }, []);
+  const handleMouseLeave = useCallback(() => {
+    if (!logoRef.current) return;
+    logoRef.current.style.setProperty("--rotate-x", "0deg");
+    logoRef.current.style.setProperty("--rotate-y", "0deg");
+  }, []);
 
   return (
     <section
@@ -89,20 +105,37 @@ export default function Hero() {
             <div className="absolute w-[50%] h-[56%] rounded-full border border-accent/[0.10] dark:border-accent/[0.16]" />
           </div>
 
-          {/* Tooth Images: light mode / dark mode */}
-          <div className="relative w-[60%] animate-float-slow z-10">
-            <img
-              src="/images/tooth-light.png"
-              alt="Diseño de sonrisa"
-              className="block dark:hidden w-full h-auto drop-shadow-2xl"
-              style={{ filter: "saturate(0.85) brightness(1.05)" }}
-            />
-            <img
-              src="/images/tooth-dark.png"
-              alt="Diseño de sonrisa"
-              className="hidden dark:block w-full h-auto drop-shadow-2xl"
-              style={{ filter: "saturate(0.9) brightness(1.1)" }}
-            />
+          {/* Logo with 3D Tilt & Dramatic Glow */}
+          <div
+            ref={logoRef}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            className="relative w-[65%] z-10"
+            style={{ perspective: "1200px" }}
+          >
+            {/* Dramatic background glow layers */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="w-full aspect-square rounded-full bg-accent/15 dark:bg-accent/20 blur-[80px] scale-150 animate-pulse-glow" />
+              <div className="absolute w-[70%] aspect-square rounded-full bg-accent/10 dark:bg-accent/15 blur-[60px] scale-125" />
+            </div>
+
+            {/* Logo with 3D transform and float */}
+            <div
+              className="relative animate-float-slow"
+              style={{
+                transform: "rotateX(var(--rotate-x, 0deg)) rotateY(var(--rotate-y, 0deg)) scale(1)",
+                transition: "transform 0.15s ease-out",
+              }}
+            >
+              <img
+                src="/images/logo-texto.png"
+                alt="Dra. Valentina González"
+                className="w-full h-auto"
+                style={{
+                  filter: "drop-shadow(0 0 40px rgba(196, 168, 130, 0.25)) drop-shadow(0 0 80px rgba(196, 168, 130, 0.15)) drop-shadow(0 20px 60px rgba(0,0,0,0.1))",
+                }}
+              />
+            </div>
           </div>
 
           {/* Floating Badges */}
