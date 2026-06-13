@@ -111,7 +111,7 @@ export default function About() {
                 <div className="w-full aspect-square rounded-full shadow-2xl" style={{ backgroundColor: "#dbd3bf" }} />
 
                 {/* Image overflowing top of circle */}
-                <div className="absolute left-[-8%] right-[-8%] -top-[18%] bottom-0">
+                <div className="absolute left-[-8%] right-[-8%] -top-[18%] bottom-0 overflow-hidden rounded-[0_0_50%_50%]">
                   <Image
                     src="/images/dra-logo.png"
                     alt="Dra. Valentina González Cruz, odontóloga estética"
@@ -243,7 +243,7 @@ export default function About() {
         {Array.from({ length: 35 }, (_, i) => (
           <div
             key={i}
-            className="absolute rounded-full"
+            className="absolute rounded-full animate-drift"
             style={{
               width: `${Math.random() * 4 + 3}px`,
               height: `${Math.random() * 4 + 3}px`,
@@ -251,9 +251,9 @@ export default function About() {
               top: `${Math.random() * 100}%`,
               backgroundColor: i % 3 === 0 ? "#C9A86C" : i % 3 === 1 ? "#D4AF7A" : "#B8944F",
               opacity: Math.random() * 0.3 + 0.25,
-              animation: `drift ${Math.random() * 4 + 4}s ease-in-out ${Math.random() * 5}s infinite`,
-              willChange: "transform",
-            }}
+              "--drift-duration": `${Math.random() * 4 + 4}s`,
+              "--drift-delay": `${Math.random() * 5}s`,
+            } as React.CSSProperties}
           />
         ))}
       </div>
