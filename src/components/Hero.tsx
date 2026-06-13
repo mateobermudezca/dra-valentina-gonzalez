@@ -33,6 +33,9 @@ export default function Hero() {
       id="inicio"
       className="relative min-h-screen overflow-hidden pt-24 flex items-center"
     >
+      {/* Subtle top gradient */}
+      <div className="absolute top-0 left-0 right-0 h-40 pointer-events-none z-[2]" aria-hidden="true" style={{ background: "linear-gradient(to bottom, rgba(219,211,191,0.25) 0%, transparent 100%)" }} />
+
       {/* Hero 3D Scene Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Hero3DScene />

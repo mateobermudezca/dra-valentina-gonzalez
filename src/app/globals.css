@@ -129,6 +129,13 @@ html {
   animation: float 6s ease-in-out infinite;
 }
 
+@keyframes drift {
+  0%, 100% { transform: translate(0px, 0px); }
+  25% { transform: translate(6px, -12px); }
+  50% { transform: translate(-4px, -20px); }
+  75% { transform: translate(-8px, -8px); }
+}
+
 @keyframes morphBlob {
   0%, 100% { border-radius: 60% 40% 45% 55% / 55% 45% 55% 45%; }
   25% { border-radius: 45% 55% 50% 50% / 60% 40% 55% 45%; }

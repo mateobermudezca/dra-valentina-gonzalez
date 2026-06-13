@@ -60,29 +60,6 @@ export default function About() {
       ref={sectionRef}
       className="relative min-h-screen overflow-hidden flex items-center py-24 lg:py-0 selection:bg-[#C9A86C]/20 selection:text-[#1A1A1A]"
     >
-      {/* Decorative background */}
-      <div className="absolute inset-0 pointer-events-none z-0" aria-hidden="true">
-        <div
-          className="absolute inset-0 opacity-50"
-          style={{
-            backgroundImage: "radial-gradient(circle, rgba(201,168,108,0.08) 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
-          }}
-        />
-        <div
-          className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full"
-          style={{
-            background: "radial-gradient(circle, rgba(201,168,108,0.08) 0%, transparent 70%)",
-          }}
-        />
-        <div
-          className="absolute -bottom-40 -left-40 w-[400px] h-[400px] rounded-full"
-          style={{
-            background: "radial-gradient(circle, rgba(201,168,108,0.06) 0%, transparent 70%)",
-          }}
-        />
-      </div>
-
       {/* Decorative SVG line */}
       <div
         ref={svgRef}
@@ -130,27 +107,24 @@ export default function About() {
               }`}
             >
               <div className="relative mx-auto max-w-[320px] sm:max-w-[400px] lg:max-w-[480px]">
-                {/* Image circle container */}
-                <div className="relative flex items-center justify-center">
-                  <div
-                    className="w-full aspect-square rounded-full shadow-2xl overflow-hidden"
-                    style={{ backgroundColor: "#C9A86C" }}
-                  >
-                    <div className="relative w-full h-full">
-                      <Image
-                        src="/images/dra-logo.png"
-                        alt="Dra. Valentina González Cruz, odontóloga estética"
-                        fill
-                        className="object-cover object-top transition-transform duration-700 hover:scale-105 cursor-pointer"
-                        sizes="(max-width: 640px) 320px, (max-width: 1024px) 400px, 480px"
-                        quality={90}
-                        loading="lazy"
-                      />
-                    </div>
-                  </div>
-                  {/* Gold ring accent */}
-                  <div className="absolute inset-0 rounded-full ring-2 ring-[#C9A86C]/20 pointer-events-none" />
+                {/* Circle background */}
+                <div className="w-full aspect-square rounded-full shadow-2xl" style={{ backgroundColor: "#dbd3bf" }} />
+
+                {/* Image overflowing top of circle */}
+                <div className="absolute left-[-8%] right-[-8%] -top-[18%] bottom-0">
+                  <Image
+                    src="/images/dra-logo.png"
+                    alt="Dra. Valentina González Cruz, odontóloga estética"
+                    fill
+                    className="object-cover object-top transition-transform duration-700 hover:scale-105 cursor-pointer"
+                    sizes="(max-width: 640px) 320px, (max-width: 1024px) 400px, 480px"
+                    quality={90}
+                    loading="lazy"
+                  />
                 </div>
+
+                {/* Gold ring accent */}
+                <div className="absolute inset-0 rounded-full ring-2 ring-[#C9A86C]/20 pointer-events-none" />
 
                 {/* Floating decorative ring */}
                 <div className="hidden sm:block absolute -top-6 -right-6 w-20 h-20 border-2 border-[#C9A86C]/30 rounded-full animate-spin-slow pointer-events-none">
@@ -266,18 +240,18 @@ export default function About() {
       </div>
       {/* Floating particles */}
       <div className="absolute inset-0 pointer-events-none z-[3] overflow-hidden" aria-hidden="true">
-        {Array.from({ length: 20 }, (_, i) => (
+        {Array.from({ length: 35 }, (_, i) => (
           <div
             key={i}
             className="absolute rounded-full"
             style={{
-              width: `${Math.random() * 4 + 2}px`,
-              height: `${Math.random() * 4 + 2}px`,
+              width: `${Math.random() * 4 + 3}px`,
+              height: `${Math.random() * 4 + 3}px`,
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              backgroundColor: i % 3 === 0 ? "#C9A86C" : i % 3 === 1 ? "#D4AF7A" : "#E8D5B7",
-              opacity: Math.random() * 0.4 + 0.15,
-              animation: `float ${Math.random() * 3 + 3}s ease-in-out ${Math.random() * 4}s infinite`,
+              backgroundColor: i % 3 === 0 ? "#C9A86C" : i % 3 === 1 ? "#D4AF7A" : "#B8944F",
+              opacity: Math.random() * 0.3 + 0.25,
+              animation: `drift ${Math.random() * 4 + 4}s ease-in-out ${Math.random() * 5}s infinite`,
               willChange: "transform",
             }}
           />

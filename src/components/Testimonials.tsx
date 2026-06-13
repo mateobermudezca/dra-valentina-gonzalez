@@ -159,31 +159,6 @@ export default function Testimonials() {
 
   return (
     <section className="relative overflow-hidden py-28 md:py-36 selection:bg-[#C9A86C]/20 selection:text-[#1A1A1A]">
-      <div className="absolute inset-0 pointer-events-none z-0" aria-hidden="true">
-        <div
-          className="absolute inset-0 opacity-50"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle, rgba(201,168,108,0.08) 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
-          }}
-        />
-        <div
-          className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(201,168,108,0.08) 0%, transparent 70%)",
-          }}
-        />
-        <div
-          className="absolute -bottom-40 -left-40 w-[400px] h-[400px] rounded-full"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(201,168,108,0.06) 0%, transparent 70%)",
-          }}
-        />
-      </div>
-
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         <div
           ref={badgeRef}
