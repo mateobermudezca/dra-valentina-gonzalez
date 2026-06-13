@@ -47,7 +47,6 @@ function StatCard({ stat, shouldStart }: { stat: StatDef; shouldStart: boolean }
 export default function About() {
   const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal<HTMLElement>(0.05);
   const { ref: imgWrapperRef, isVisible: imgVisible } = useScrollReveal<HTMLDivElement>(0.2);
-  const { ref: badgeRef, isVisible: badgeVisible } = useScrollReveal<HTMLDivElement>(0.15);
   const { ref: headingGroupRef, isVisible: headingVisible } = useScrollReveal<HTMLDivElement>(0.15);
   const { ref: lineRef, isVisible: lineVisible } = useScrollReveal<HTMLDivElement>(0.15);
   const { ref: textRef, isVisible: textVisible } = useScrollReveal<HTMLDivElement>(0.15);
@@ -107,43 +106,15 @@ export default function About() {
               }`}
             >
               <div className="relative mx-auto max-w-[320px] sm:max-w-[400px] lg:max-w-[480px]">
-                {/* Circle background */}
-                <div className="w-full aspect-square rounded-full shadow-2xl" style={{ backgroundColor: "#dbd3bf" }} />
-
-                {/* Image overflowing top of circle */}
-                <div className="absolute left-[-8%] right-[-8%] -top-[18%] bottom-0 overflow-hidden rounded-[0_0_50%_50%]">
-                  <Image
-                    src="/images/dra-logo.png"
-                    alt="Dra. Valentina González Cruz, odontóloga estética"
-                    fill
-                    className="object-cover object-top transition-transform duration-700 hover:scale-105 cursor-pointer"
-                    sizes="(max-width: 640px) 320px, (max-width: 1024px) 400px, 480px"
-                    quality={90}
-                    loading="lazy"
-                  />
-                </div>
-
-                {/* Gold ring accent */}
-                <div className="absolute inset-0 rounded-full ring-2 ring-[#C9A86C]/20 pointer-events-none" />
-
-                {/* Floating decorative ring */}
-                <div className="hidden sm:block absolute -top-6 -right-6 w-20 h-20 border-2 border-[#C9A86C]/30 rounded-full animate-spin-slow pointer-events-none">
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50px] h-[50px] border border-dashed border-[#C9A86C]/20 rounded-full" />
-                </div>
-
-                {/* Floating badge */}
-                <div
-                  ref={badgeRef}
-                  className={`hidden sm:flex absolute -bottom-4 -left-4 items-center gap-3 backdrop-blur-md bg-white/70 rounded-2xl px-5 py-3 shadow-lg border border-white/50 transition-all duration-700 ease-out ${
-                    badgeVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
-                  }`}
-                  style={{ transitionDelay: "600ms" }}
-                >
-                  <Smiley size={22} className="text-[#C9A86C]" weight="duotone" />
-                  <span className="text-[10px] uppercase tracking-[0.25em] font-medium text-[#C9A86C]">
-                    Artista Dental
-                  </span>
-                </div>
+                <Image
+                  src="/images/dra-circle.png"
+                  alt="Dra. Valentina González Cruz, odontóloga estética"
+                  width={480}
+                  height={480}
+                  className="w-full h-auto drop-shadow-2xl"
+                  quality={95}
+                  priority
+                />
               </div>
             </div>
           </div>
