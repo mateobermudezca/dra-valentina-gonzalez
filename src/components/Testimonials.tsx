@@ -85,6 +85,8 @@ export default function Testimonials() {
   const { ref: badgeRef, isVisible: badgeVisible } = useScrollReveal<HTMLDivElement>(0.15);
   const { ref: lineRef, isVisible: lineVisible } = useScrollReveal<HTMLDivElement>(0.15);
   const { ref: carouselRevealRef, isVisible: carouselVisible } = useScrollReveal<HTMLDivElement>(0.1);
+  const { ref: lineRef2, isVisible: lineVisible2 } = useScrollReveal<HTMLDivElement>(0.15);
+  const { ref: copyRef, isVisible: copyVisible } = useScrollReveal<HTMLParagraphElement>(0.15);
 
   const [cardWidthPct, setCardWidthPct] = useState(55);
   const [containerWidth, setContainerWidth] = useState(0);
@@ -104,9 +106,9 @@ export default function Testimonials() {
     const lg = window.matchMedia("(min-width: 1024px)");
     const md = window.matchMedia("(min-width: 768px)");
     const update = () => {
-      if (lg.matches) setCardWidthPct(55);
-      else if (md.matches) setCardWidthPct(70);
-      else setCardWidthPct(85);
+      if (lg.matches) setCardWidthPct(38);
+      else if (md.matches) setCardWidthPct(52);
+      else setCardWidthPct(72);
     };
     update();
     lg.addEventListener("change", update);
@@ -312,6 +314,31 @@ export default function Testimonials() {
               </div>
             </div>
           </div>
+
+          <div
+            ref={lineRef2}
+            className={`mt-16 mb-6 h-[2px] rounded-full mx-auto transition-all duration-1000 ease-out ${
+              lineVisible2 ? "opacity-100" : "opacity-0"
+            }`}
+            style={{
+              width: lineVisible2 ? "80px" : "0px",
+              background: "linear-gradient(to right, transparent, #C9A86C, transparent)",
+              transitionDelay: "600ms",
+            }}
+          />
+
+          <p
+            ref={copyRef}
+            className={`text-center text-base md:text-lg text-[#888888] max-w-2xl mx-auto leading-relaxed transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              copyVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            }`}
+            style={{ transitionDelay: "750ms", fontFamily: "var(--font-body)" }}
+          >
+            Cada sonrisa que transformamos es nuestra mejor carta de presentación.{" "}
+            <span className="font-semibold text-[#C9A86C]">
+              Tú puedes ser la próxima.
+            </span>
+          </p>
         </div>
       </div>
     </section>
