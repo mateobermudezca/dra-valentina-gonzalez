@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, PlayCircle, Sparkle, Swatches, TestTube } from "@phosphor-icons/react";
+import { ArrowRight, PlayCircle, Circle } from "@phosphor-icons/react";
 import { useReveal } from "@/lib/useReveal";
 import dynamic from "next/dynamic";
 import { useRef, useCallback } from "react";
@@ -138,25 +138,33 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Floating Badges */}
+          {/* Orbiting Particles */}
           <div className="absolute inset-0 w-full h-full pointer-events-none z-20">
-            {/* Top Left Badge */}
-            <div className="absolute top-[8%] left-[-2%] md:left-[8%] flex items-center gap-2 rounded-full bg-white/60 dark:bg-black/60 px-3 py-1.5 backdrop-blur-md border border-accent/10 dark:border-accent/15 pointer-events-auto shadow-sm transition-all duration-300 hover:scale-105">
-              <Sparkle size={12} className="text-accent" weight="bold" />
-              <span className="text-[10px] font-semibold text-text-light dark:text-text-dark tracking-wider uppercase">Diseño 3D</span>
-            </div>
-            
-            {/* Top Right Badge */}
-            <div className="absolute top-[18%] right-[-2%] md:right-[5%] flex items-center gap-2 rounded-full bg-white/60 dark:bg-black/60 px-3 py-1.5 backdrop-blur-md border border-accent/10 dark:border-accent/15 pointer-events-auto shadow-sm transition-all duration-300 hover:scale-105">
-              <Swatches size={12} className="text-accent" weight="bold" />
-              <span className="text-[10px] font-semibold text-text-light dark:text-text-dark tracking-wider uppercase">Porcelana</span>
-            </div>
-
-            {/* Bottom Left Badge */}
-            <div className="absolute bottom-[22%] left-[-2%] md:left-[3%] flex items-center gap-2 rounded-full bg-white/60 dark:bg-black/60 px-3 py-1.5 backdrop-blur-md border border-accent/10 dark:border-accent/15 pointer-events-auto shadow-sm transition-all duration-300 hover:scale-105">
-              <TestTube size={12} className="text-accent" weight="bold" />
-              <span className="text-[10px] font-semibold text-text-light dark:text-text-dark tracking-wider uppercase">Alta Gama</span>
-            </div>
+            {[0, 1, 2, 3, 4, 5].map((i) => (
+              <div
+                key={i}
+                className="absolute left-1/2 top-1/2 origin-center"
+                style={{
+                  width: 0,
+                  height: 0,
+                  animation: `orbit ${6 + i * 0.8}s linear infinite`,
+                  animationDelay: `${-i * 0.6}s`,
+                }}
+              >
+                <div
+                  className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full"
+                  style={{
+                    width: `${4 + (i % 3) * 2}px`,
+                    height: `${4 + (i % 3) * 2}px`,
+                    background: i % 2 === 0 ? "#c4a882" : "#e8d5b8",
+                    opacity: 0.5 - i * 0.05,
+                    left: `${55 + i * 8}%`,
+                    top: 0,
+                    boxShadow: i % 2 === 0 ? "0 0 6px rgba(196,168,130,0.5)" : "0 0 4px rgba(232,213,184,0.3)",
+                  }}
+                />
+              </div>
+            ))}
           </div>
 
         </div>

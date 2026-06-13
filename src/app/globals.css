@@ -124,3 +124,8 @@ html {
   animation: float-slow 6s ease-in-out infinite;
 }
 
+@keyframes orbit {
+  0% { transform: rotate(0deg) translateX(55%) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(55%) rotate(-360deg); }
+}
+

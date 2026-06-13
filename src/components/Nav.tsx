@@ -60,6 +60,9 @@ export default function Nav() {
               className="h-8 w-auto object-contain"
               priority
             />
+            <span className="hidden sm:inline text-sm font-semibold text-text-light dark:text-text-dark tracking-tight whitespace-nowrap">
+              Dra. Valentina González
+            </span>
           </a>
 
           <div className="hidden items-center gap-1 md:flex">
